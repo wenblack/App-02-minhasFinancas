@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "minhasFinancas",
+    "slug": "minhasFinancas",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "minhasFinancas"
+}
