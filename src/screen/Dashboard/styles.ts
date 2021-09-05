@@ -80,3 +80,15 @@ export const CartoesDeDestaque = styled.ScrollView.attrs({
     position:absolute;
     margin-top: ${RFPercentage(20)}px;
   `;
+
+export const Trasacoes = styled.View`
+    flex:1;
+    padding :0 24px;
+    margin-top: ${RFPercentage(12)}px;
+  `
+export const Titulo = styled.Text`
+    font-size: ${RFValue(18)}px;
+    font-family: 'Poppins_400Regular';
+    margin-bottom: 16px;
+  `
+

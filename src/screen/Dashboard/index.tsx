@@ -1,5 +1,6 @@
 import React from 'react'
 import { CartaoDestaque } from '../../components/CartaoDestaque'
+import { CartaoTransacao } from '../../components/CartaoTransacao'
 //Importando estilos do tema(Styled Components)
 //Propriedade horizontal da  ScrollView deixa ela horizontal 
 import {
@@ -12,7 +13,9 @@ import {
     UserGreeting,
     Username,
     Icone,
-    CartoesDeDestaque
+    CartoesDeDestaque,
+    Trasacoes,
+    Titulo
 
 } from './styles'
 //Interface
@@ -35,11 +38,29 @@ export function Dashboard() {
                 </UserContainer>
             </Header>
             <CartoesDeDestaque >
-                <CartaoDestaque />
-                <CartaoDestaque />
-                <CartaoDestaque />
+                <CartaoDestaque
+                    tipo="up"
+                    titulo="Entrada"
+                    quantidade="R$ 17.000,00"
+                    ultimaTransacao="Útima entrada dia 13 de Abril"
+                />
+                <CartaoDestaque
+                    tipo="down"
+                    titulo="Saídas"
+                    quantidade="R$ 1.259,00"
+                    ultimaTransacao="Útima saída dia 13 de Abril"
+                />
+                <CartaoDestaque
+                    tipo="total"
+                    titulo="Total"
+                    quantidade="R$ 16.141,00"
+                    ultimaTransacao="01 à 16 de abril"
+                />
             </CartoesDeDestaque>
-
+            <Trasacoes>
+                <Titulo>Listagem</Titulo>
+                <CartaoTransacao />
+            </Trasacoes>
         </Container>
     )
 }

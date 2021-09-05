@@ -11,17 +11,35 @@ import {
 }
     from './style'
 
-export function CartaoDestaque() {
+interface Props {
+    titulo: string;
+    quantidade: string;
+    ultimaTransacao: string;
+    tipo: 'up' | 'down' | 'total';
+}
+
+const icone = {
+    up: 'arrow-up-circle',
+    down: 'arrow-down-circle',
+    total: 'dollar-sign'
+}
+
+export function CartaoDestaque({
+    titulo,
+    quantidade,
+    ultimaTransacao,
+    tipo
+}: Props) {
 
     return (
-        <Container >
+        <Container tipo={tipo}>
             <Header>
-                <Titulo>Entrada</Titulo>
-                <Icone name="arrow-up-circle"></Icone>
+                <Titulo tipo={tipo}>{titulo}</Titulo>
+                <Icone name={icone[tipo]} tipo={tipo} />
             </Header>
             <Rodape>
-                <Quantidade>R$ 17.400,00 </Quantidade>
-                <UltimaTransacao>Última entrada dia 13 de abril</UltimaTransacao>
+                <Quantidade tipo={tipo}>{quantidade}</Quantidade>
+                <UltimaTransacao tipo={tipo}>{ultimaTransacao}</UltimaTransacao>
             </Rodape>
         </Container>
     )
