@@ -1,11 +1,16 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import { Feather } from '@expo/vector-icons';
 import { RFValue } from "react-native-responsive-fontsize";
+
+interface TipoDeTransacaoProps {
+    tipo: 'positivo' | 'negativo';
+}
 
 export const Container = styled.View`
     background-color: #FFFFFF;
     border-radius: 5px;
     padding: 17px 24px;
+    margin-bottom: 16px;
     
     
 `;
@@ -14,11 +19,16 @@ export const Titulo = styled.Text`
     font-family: 'Poppins_400Regular';
 `;
 
-export const Quantidade = styled.Text`
+export const Quantidade = styled.Text <TipoDeTransacaoProps>`
+     
      font-size: ${RFValue(20)}px;
      margin-top: 2px;
      font-family: 'Poppins_400Regular';
-     color: #12A454
+     color:#12A454
+     ${(props) => props.tipo === 'negativo' && css`
+    color: #E83F5B;
+    `}; 
+     
 `;
 
 export const Cabecalho = styled.View`

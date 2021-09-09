@@ -1,6 +1,6 @@
 import React from 'react'
 import { CartaoDestaque } from '../../components/CartaoDestaque'
-import { CartaoTransacao } from '../../components/CartaoTransacao'
+import { CartaoTransacao, CartaoTransacaoProps } from '../../components/CartaoTransacao'
 //Importando estilos do tema(Styled Components)
 //Propriedade horizontal da  ScrollView deixa ela horizontal 
 import {
@@ -15,10 +15,56 @@ import {
     Icone,
     CartoesDeDestaque,
     Trasacoes,
-    Titulo
+    Titulo,
+    ListadeTransicao
 
 } from './styles'
 //Interface
+export interface ListaData extends CartaoTransacaoProps {
+    id: string;
+}
+
+const data: ListaData[] = [
+    {
+        id: '1',
+        tipo: "positivo",
+        title: "Desenvolvimento de site",
+        quantidade: "R$ 12.000,00",
+        category: {
+            nome: 'Vendas',
+            icon: 'dollar-sign',
+        },
+        data: "13/04/2021",
+    },
+
+    {
+        id: '2',
+        tipo: "negativo",
+        title: "Hamburgueria",
+        quantidade: "R$ 59,00",
+        category: {
+            nome: 'Alimentação',
+            icon: 'coffee',
+        },
+        data: "10/04/2021",
+    },
+
+    {
+        id: '3',
+        tipo: "negativo",
+        title: "Aluguel do Apartamento",
+        quantidade: "R$ 1.200,00",
+        category: {
+            nome: 'Casa',
+            icon: 'shopping-bag'
+        },
+        data: "10/04/2021",
+    },
+
+
+
+];
+
 export function Dashboard() {
     return (
         <Container>
@@ -59,7 +105,16 @@ export function Dashboard() {
             </CartoesDeDestaque>
             <Trasacoes>
                 <Titulo>Listagem</Titulo>
-                <CartaoTransacao />
+                <ListadeTransicao
+                    data={data}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }) =>
+                        <CartaoTransacao
+                            dados={item}
+                        />}
+
+                />
+
             </Trasacoes>
         </Container>
     )

@@ -11,17 +11,49 @@ import {
 
 } from './style';
 
-export function CartaoTransacao() {
+interface Categoria {
+    nome: string;
+    icon: string;
+
+}
+
+export interface CartaoTransacaoProps {
+    dados: {
+        tipo: 'positivo' | 'negativo';
+        title: string;
+        quantidade: string;
+        category: Categoria;
+        data: string;
+    }
+
+}
+
+
+export function CartaoTransacao({
+    dados
+}: CartaoTransacaoPropsProps) {
     return (
         <Container>
-            <Titulo>Desenvolvimento de Site </Titulo>
-            <Quantidade>R$ 12.000,00 </Quantidade>
+            <Titulo>
+                {dados.title}
+            </Titulo>
+
+            <Quantidade tipo={dados.tipo}>
+                {dados.tipo === 'negativo' && '- '}
+                {dados.quantidade}
+            </Quantidade>
+
             <Cabecalho>
                 <Categ>
-                    <Icone name="dollar-sign" />
-                    <Nome> Vendas</Nome>
+                    <Icone name={dados.category.icon} />
+                    <Nome>
+                        {dados.category.nome}
+                    </Nome>
                 </Categ>
-                <Data>13/04/2020</Data>
+
+                <Data>
+                    {dados.data}
+                </Data>
             </Cabecalho>
         </Container>
     )

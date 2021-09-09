@@ -7,14 +7,18 @@ import styled from 'styled-components/native';
 import {
     RFPercentage,
     RFValue
-} from 'react-native-responsive-fontsize'
-import { Feather } from '@expo/vector-icons'
-import { getStatusBarHeight } from 'react-native-iphone-x-helper'
+} from 'react-native-responsive-fontsize';
+import { Feather } from '@expo/vector-icons';
+import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { ListaData } from '.';
+import { FlatList } from 'react-native';
+
 
 export const Container = styled.View`
     flex: 1;
     background-color: #F0F2F5;   
 `;
+
 
 export const Header = styled.View`
     width: 100%;
@@ -85,10 +89,18 @@ export const Trasacoes = styled.View`
     flex:1;
     padding :0 24px;
     margin-top: ${RFPercentage(12)}px;
-  `
+    margin-bottom: ${RFPercentage(3)}px;
+  `;
 export const Titulo = styled.Text`
     font-size: ${RFValue(18)}px;
     font-family: 'Poppins_400Regular';
     margin-bottom: 16px;
-  `
-
+  `;
+export const ListadeTransicao = styled(
+    FlatList as new () => FlatList<ListaData>
+).attrs({
+    showsVerticalScrollIndicator: false,
+    contentContainerStyle: {
+        paddingBottom: getBottomSpace()
+    }
+})``;
